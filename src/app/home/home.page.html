@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="success"><ion-title>Rick and Morty</ion-title></ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Bem-vindo ao multiverso</ion-card-title>
+      <ion-card-subtitle>Explore personagens e episódios da série</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-chip color="warning">Favoritos salvos: {{ fav.favoritos().length }}</ion-chip>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card appDestaqueHover>
+    <ion-card-header><ion-card-title>Personagens</ion-card-title></ion-card-header>
+    <ion-card-content>
+      Busque personagens e veja os detalhes de cada um.
+      <ion-button expand="block" routerLink="/personagens">Ver personagens</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card appDestaqueHover>
+    <ion-card-header><ion-card-title>Episódios</ion-card-title></ion-card-header>
+    <ion-card-content>
+      Lista de episódios com data de exibição.
+      <ion-button expand="block" routerLink="/episodios">Ver episódios</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card appDestaqueHover>
+    <ion-card-header><ion-card-title>Equipe</ion-card-title></ion-card-header>
+    <ion-card-content>
+      Conheça quem desenvolveu o projeto.
+      <ion-button expand="block" routerLink="/equipe">Ver equipe</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

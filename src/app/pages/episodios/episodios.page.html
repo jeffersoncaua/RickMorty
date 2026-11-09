@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start"><ion-back-button defaultHref="/home"></ion-back-button></ion-buttons>
+    <ion-title>Episódios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  @if (erro()) {
+    <p class="ion-padding">Não foi possível carregar os episódios.</p>
+  }
+
+  <ion-list>
+    @for (ep of episodios(); track ep.id) {
+      <ion-item appDestaqueHover>
+        <ion-badge slot="start" color="tertiary">{{ ep.episode }}</ion-badge>
+        <ion-label>
+          <h2>{{ ep.name }}</h2>
+          <ion-note>Exibido em {{ paraData(ep.air_date) | date:'dd/MM/yyyy' }}</ion-note>
+        </ion-label>
+      </ion-item>
+    }
+  </ion-list>
+
+  @if (carregando()) {
+    <div class="ion-text-center ion-padding"><ion-spinner></ion-spinner></div>
+  } @else if (temMais()) {
+    <div class="ion-padding">
+      <ion-button expand="block" (click)="carregarMais()">Carregar mais</ion-button>
+    </div>
+  }
+</ion-content>

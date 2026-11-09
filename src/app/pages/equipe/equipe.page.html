@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start"><ion-back-button defaultHref="/home"></ion-back-button></ion-buttons>
+    <ion-title>Equipe</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  @for (i of integrantes; track i.nome) {
+    <ion-card appDestaqueHover>
+      <ion-card-header>
+        <ion-card-title>{{ i.nome }}</ion-card-title>
+        <ion-card-subtitle>{{ i.papel }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>{{ i.descricao }}</ion-card-content>
+    </ion-card>
+  }
+</ion-content>

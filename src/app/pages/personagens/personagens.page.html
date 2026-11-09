@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="success">
+  <ion-buttons slot="start"><ion-back-button defaultHref="/home"></ion-back-button></ion-buttons>
+  <ion-title>Personagens</ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar placeholder="Buscar..." (ionInput)="buscar($any($event).target.value)"></ion-searchbar>
+
+  @if (carregando()) {
+    <ion-spinner></ion-spinner>
+  } @else if (erro()) {
+    <p>Nenhum personagem encontrado.</p>
+  } @else {
+    <ion-list>
+      @for (p of personagens(); track p.id) {
+        <ion-item [routerLink]="['/detalhes', p.id]" [appStatusBorda]="p.status" appDestaqueHover>
+          <ion-avatar slot="start"><img [src]="p.image" [alt]="p.name" /></ion-avatar>
+          <ion-label>
+            <h2>{{ p.name }}</h2>
+            <ion-note>{{ p.status | statusPt }} · {{ p.species | especie }}</ion-note>
+          </ion-label>
+        </ion-item>
+      }
+    </ion-list>
+  }
+</ion-content>
